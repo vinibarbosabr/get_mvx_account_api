@@ -1,10 +1,10 @@
 // Run the program and enter an address when prompted
 
 use reqwest::Client;
-use serde::{Deserialize, Serialize}; // Added Serialize
+use serde::{Deserialize, Serialize};
 use std::io;
 
-// The API returns a nested structure, so we need a wrapper (by Grok)
+// The API returns a nested structure, so we need a wrapper
 // Wrapper #1
 #[derive(Deserialize, Serialize, Debug)]
 struct ApiResponse {
@@ -52,7 +52,7 @@ async fn get_account(url: &str) -> Result<Account, reqwest::Error> {
         .get(url)
         .send()
         .await?
-        .json::<ApiResponse>() // Deserialize into ApiResponse first (by Grok)
+        .json::<ApiResponse>() // Deserialize into ApiResponse first 
         .await?;
 
     Ok(response.data.account)
@@ -67,5 +67,5 @@ async fn get_account(url: &str) -> Result<Account, reqwest::Error> {
 // The API used in this project is the MultiversX API
 // https://docs.multiversx.com/sdk-and-tools/rest-api/addresses
 
-// Proudly build by Vini Barbosa (@vinibarbosabr on X)
+// Proudly built by Vini Barbosa (@vinibarbosabr on X)
 // as part of a DOJO activity
